@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Log</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #e0f2f7;
+            text-align: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #64ffda;
+            margin-bottom: 20px;
+            font-size: 3em;
+            text-shadow: 0 0 10px #64ffda;
+        }
+
+        h2 {
+            color: #d1d5db;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .table-container {
+            display: block;
+            /* Initially show the first table */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        table:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+        }
+
+        th {
+            background-color: rgba(0, 128, 128, 0.3);
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        tr:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-buttons {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .nav-buttons button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-buttons button:hover {
+            background-color: #008ba7;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-buttons button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .prev {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DETAILED REPORT</h1>
+        <h2>Week-5: Learning Technology</h2>
+        <table>
+            <tr>
+                <th>DAY</th>
+                <th>ACTIVITY</th>
+            </tr>
+            <tr>
+                <td>Day-1</td>
+                <td>Learning User Interface Components in HTML- Label, TextField, Button</td>
+            </tr>
+            <tr>
+                <td>Day-2</td>
+                <td>Learning User Interface Components in HTML- Checkbox, List</td>
+            </tr>
+            <tr>
+                <td>Day-3</td>
+                <td>Learning User Interface Components in HTML- Dropdown list, Text Area</td>
+            </tr>
+            <tr>
+                <td>Day-4</td>
+                <td>Learning about Submit button and Refresh button in HTML</td>
+            </tr>
+            <tr>
+                <td>Day-5</td>
+                <td>Learning User Interface Components in HTML- Form Method, Post method, Get method</td>
+            </tr>
+            <tr>
+                <td>Day-6</td>
+                <td>Learning and Understanding Basics of JavaScript, Variables, DataTypes, Functions, etc...</td>
+            </tr>
+        </table>
+        <div class="nav-buttons">
+            <a href="activitylog5.html">
+            <button class="prev">&larr; Previous</button></a>
+            <a href="activitylog7.html">
+            <button class="next">Next &rarr;</button></a>
+        </div>
+    </div>
+</body>
+</html>

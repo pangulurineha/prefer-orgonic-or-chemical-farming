@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Data Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+        }
+        .heading-title{
+            color: #f8fafc;
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .chart-wrapper {
+            width: calc(50% - 1rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .chart-wrapper canvas {
+            min-height: 250px;
+            max-height: 300px;
+            background-color: #1e293b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .chart-wrapper {
+                width: 100%;
+            }
+            .chart-container {
+                display: block;
+            }
+        }
+        .chart-description {
+            margin-top: 1rem;
+            text-align: center;
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+        .inference-box {
+            background-color: #1e293b;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        .inference-title {
+            color: #f8fafc;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .inference-text {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.75rem;
+        }
+        .next-page-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #fff;
+            background-color: #3b82f6;
+            border-radius: 0.375rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+            width: fit-content;
+        }
+        .next-page-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .next-page-button:active {
+            background-color: #1e40af;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div class="container">
+        <h1 class="heading-title">Farming Data Visualization</h1>
+        <div class="chart-container">
+            <div class="chart-wrapper">
+                <canvas id="farmingPieChart"></canvas>
+                <p class="chart-description">This pie chart illustrates the distribution of farming area between organic and chemical farming practices.</p>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="farmingBarGraph"></canvas>
+                <p class="chart-description">This bar graph compares the number of farmers involved in organic versus chemical farming.</p>
+            </div>
+        </div>
+        <div class="inference-box">
+            <p>
+                Survey we are done on total number of farmers                            :  50<br>
+                No of  Farmers preferred organic farming                                     :  16<br>
+                No of  Farmers preferred chemical farming                                  :   34<br>
+             </p>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="conclusion.html">
+            <button class="next-page-button">Next Page</button>
+            </a>
+        </div>
+    </div>
+     <script>
+        // Register the datalabels plugin globally
+        Chart.register(ChartDataLabels);
+
+        const ctxPie = document.getElementById('farmingPieChart').getContext('2d');
+        const ctxBar = document.getElementById('farmingBarGraph').getContext('2d');
+        let pieChart, barGraph;
+
+        function createPieChart(organicArea, chemicalArea) {
+            pieChart = new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: ['Organic Farming', 'Chemical Farming'],
+                    datasets: [{
+                        label: 'Farming Area',
+                        data: [organicArea, chemicalArea],
+                        backgroundColor: [
+                            'rgba(56, 189, 248, 0.7)',
+                            'rgba(220, 38, 38, 0.7)',
+                        ],
+                        borderColor: [
+                            'rgba(56, 189, 248, 1)',
+                            'rgba(220, 38, 38, 1)',
+                        ],
+                        borderWidth: 1,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#f8fafc' // Corrected property for font color
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Farming Area Distribution',
+                            font: {
+                                size: 18,
+                                color: '#f8fafc' // Corrected property for font color
+                            },
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            formatter: (value, context) => {
+                                const total = context.chart.data.datasets[0].data.reduce((sum, current) => sum + current, 0);
+                                const percentage = ((value / total) * 100).toFixed(1) + '%';
+                                return value + ' (' + percentage + ')';
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: 12
+                            }
+                        }
+                    },
+                },
+            });
+        }
+
+        function createBarGraph(organicFarmers, chemicalFarmers) {
+          barGraph = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Farmers'],
+                datasets: [{
+                    label: 'Organic Farming',
+                    data: [organicFarmers],
+                    backgroundColor: 'rgba(52, 211, 153, 0.7)',
+                    borderColor: 'rgba(52, 211, 153, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Chemical Farming',
+                    data: [chemicalFarmers],
+                    backgroundColor: 'rgba(252, 211, 77, 0.7)',
+                    borderColor: 'rgba(252, 211, 77, 1)',
+                    borderWidth: 1,
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Number of Farmers',
+                        font: {
+                            size: 18,
+                            color: '#f8fafc' // Corrected property for font color
+                        },
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#f8fafc' // Corrected property for font color
+                        }
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value, context) => {
+                            return value;
+                        },
+                        font: {
+                            weight: 'bold',
+                            size: 12
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#d1d5db',
+                            font: {
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            color: '#4b5563'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#d1d5db',
+                            font: {
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            color: '#4b5563'
+                        }
+                    }
+                },
+            },
+        });
+        }
+
+        window.onload = () => {
+            const initialOrganicArea = 30;
+            const initialChemicalArea = 70;
+            const initialOrganicFarmers = 16;
+            const initialChemicalFarmers = 34;
+            createPieChart(initialOrganicArea, initialChemicalArea);
+            createBarGraph(initialOrganicFarmers, initialChemicalFarmers);
+        };
+    </script>
+</body>
+</html>

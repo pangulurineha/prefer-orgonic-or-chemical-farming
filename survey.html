@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resident Preferences Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .container {
+      max-width: 95%;
+      margin: auto;
+      overflow-x: auto;
+    }
+    .search-box {
+      text-align: left;
+      margin: 20px 0 20px 10px;
+    }
+    .search-box input {
+      padding: 10px 15px;
+      width: 300px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background-color: #1f1f1f;
+      color: white;
+      font-size: 16px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 8px rgba(0, 188, 212, 0.3);
+    }
+    .search-box input::placeholder {
+      color: #aaa;
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: #00bcd4;
+      box-shadow: 0 0 12px #00bcd4;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      transition: box-shadow 0.3s ease;
+    }
+    th, td {
+      border: 1px solid #555;
+      padding: 8px 12px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    th {
+      background-color: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tr:nth-child(even) {
+      background-color: #2a2a2a;
+    }
+    tr:hover {
+      background-color: #3a3a3a;
+      cursor: pointer;
+    }
+    tr:hover td {
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    }
+    .highlight {
+      background-color: #444444 !important;
+    }
+    .next-page-btn {
+      background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    display: block; /* Change to block display */
+    margin-left: auto; /* Auto margins for centering */
+    margin-right: auto;
+    text-decoration: none;
+  }
+
+  .next-page-btn:hover {
+    background-color: aqua;
+  }
+  </style>
+</head>
+<body>
+  <h2>Resident Preferences</h2>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search residents...">
+    </div>
+    <table id="residentTable">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Name of the Resident</th>
+          <th>Aadhar Number of the Resident</th>
+          <th>Mobile No</th>
+          <th>Age</th>
+          <th>Prefers Organic</th>
+          <th>Prefers Chemical</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>N. BHADRA</td><td>---</td><td>9701756123</td><td>37</td><td>NO</td><td>YES</td></tr>
+      <tr><td>2</td><td>K. SIVAKUMAR</td><td>---</td><td>9888537776</td><td>41</td><td>NO</td><td>YES</td></tr>
+      <tr><td>3</td><td>R. MAHESH</td><td>---</td><td>7396395889</td><td>29</td><td>NO</td><td>YES</td></tr>
+      <tr><td>4</td><td>P. RAHUL</td><td>---</td><td>9989188854</td><td>35</td><td>NO</td><td>YES</td></tr>
+      <tr><td>5</td><td>H. DIVYA</td><td>---</td><td>8885203533</td><td>40</td><td>NO</td><td>YES</td></tr>
+      <tr><td>6</td><td>Y. MRUDHULA</td><td>---</td><td>9100609067</td><td>50</td><td>YES</td><td>NO</td></tr>
+      <tr><td>7</td><td>S. MOHAN KUMAR</td><td>---</td><td>8686236324</td><td>61</td><td>YES</td><td>NO</td></tr>
+      <tr><td>8</td><td>P. RAVI RAJA</td><td>---</td><td>9989594925</td><td>65</td><td>YES</td><td>NO</td></tr>
+      <tr><td>9</td><td>N. PRIYANKA</td><td>569146286071</td><td>9941094703</td><td>32</td><td>NO</td><td>YES</td></tr>
+      <tr><td>10</td><td>R. SRI LAKSHMI</td><td>---</td><td>9492521812</td><td>36</td><td>NO</td><td>YES</td></tr>
+      <tr><td>11</td><td>N. GAYATRI</td><td>454486654616</td><td>9493210002</td><td>37</td><td>NO</td><td>YES</td></tr>
+      <tr><td>12</td><td>S. PALLAVI</td><td>---</td><td>9393483810</td><td>48</td><td>NO</td><td>YES</td></tr>
+      <tr><td>13</td><td>D. SARITHA</td><td>---</td><td>9581963259</td><td>52</td><td>NO</td><td>YES</td></tr>
+      <tr><td>14</td><td>S. SRINIVAS</td><td>---</td><td>6300961264</td><td>60</td><td>NO</td><td>YES</td></tr>
+      <tr><td>15</td><td>S. SURENDRA</td><td>---</td><td>893881218</td><td>70</td><td>NO</td><td>YES</td></tr>
+      <tr><td>16</td><td>P. ASHOK</td><td>---</td><td>9177755433</td><td>38</td><td>NO</td><td>YES</td></tr>
+      <tr><td>17</td><td>N. MANOJ</td><td>---</td><td>7010949635</td><td>34</td><td>NO</td><td>YES</td></tr>
+      <tr><td>18</td><td>P. RAMANAMMA</td><td>---</td><td>9581285121</td><td>47</td><td>YES</td><td>NO</td></tr>
+      <tr><td>19</td><td>SK. MASHTHANVALLI</td><td>---</td><td>9553081741</td><td>45</td><td>NO</td><td>YES</td></tr>
+      <tr><td>20</td><td>SK. SHAKHEER</td><td>---</td><td>7652934156</td><td>37</td><td>NO</td><td>YES</td></tr>
+      <tr><td>21</td><td>B. SUJANA</td><td>---</td><td>6281866855</td><td>46</td><td>NO</td><td>YES</td></tr>
+      <tr><td>22</td><td>V. VIJAYA</td><td>---</td><td>9703886065</td><td>51</td><td>NO</td><td>YES</td></tr>
+      <tr><td>23</td><td>G. MASTHANANAMMA</td><td>---</td><td>9348521930</td><td>57</td><td>NO</td><td>YES</td></tr>
+      <tr><td>24</td><td>PATHAN NURZAHIN</td><td>7728873569483</td><td>7659912345</td><td>29</td><td>NO</td><td>YES</td></tr>
+      <tr><td>25</td><td>S. GANGADHAR</td><td>8151182462466</td><td>9908348749</td><td>56</td><td>YES</td><td>NO</td></tr>
+      <tr><td>26</td><td>S. MADHUSUDHAN</td><td>7521463428954</td><td>8688701828</td><td>58</td><td>NO</td><td>YES</td></tr>
+      <tr><td>27</td><td>M. PAPI REDDY</td><td>---</td><td>9502567232</td><td>94</td><td>YES</td><td>NO</td></tr>
+      <tr><td>28</td><td>S. ANKIREDDY</td><td>---</td><td>9490296113</td><td>70</td><td>YES</td><td>NO</td></tr>
+      <tr><td>29</td><td>S. VENKATA LAKSHMI</td><td>---</td><td>9949625467</td><td>65</td><td>NO</td><td>YES</td></tr>
+      <tr><td>30</td><td>A. NAGI REDDY</td><td>---</td><td>9885234128</td><td>83</td><td>YES</td><td>NO</td></tr>
+      <tr><td>31</td><td>L. RAMI REDDY</td><td>---</td><td>---</td><td>86</td><td>NO</td><td>YES</td></tr>
+      <tr><td>32</td><td>M. GANGAMMA</td><td>---</td><td>---</td><td>79</td><td>YES</td><td>NO</td></tr>
+      <tr><td>33</td><td>A. BHASKAR REDDY</td><td>---</td><td>---</td><td>50</td><td>NO</td><td>YES</td></tr>
+      <tr><td>34</td><td>S. EESWARAMMA</td><td>---</td><td>---</td><td>75</td><td>NO</td><td>YES</td></tr>
+      <tr><td>35</td><td>G. RAMARAO</td><td>452577342624</td><td>---</td><td>60</td><td>NO</td><td>YES</td></tr>
+      <tr><td>36</td><td>A. RAMAIAH</td><td>563362761595</td><td>---</td><td>83</td><td>YES</td><td>NO</td></tr>
+      <tr><td>37</td><td>B. VENKATESWARULU</td><td>373976856743</td><td>---</td><td>74</td><td>YES</td><td>NO</td></tr>
+      <tr><td>38</td><td>P. MADHAVARAO</td><td>---</td><td>---</td><td>40</td><td>NO</td><td>YES</td></tr>
+      <tr><td>39</td><td>P. SAI KRISHNA</td><td>787043877197</td><td>---</td><td>26</td><td>NO</td><td>YES</td></tr>
+      <tr><td>40</td><td>K. PERAIAH</td><td>332179747673</td><td>---</td><td>72</td><td>YES</td><td>NO</td></tr>
+      <tr><td>41</td><td>M. KONDAYYA</td><td>870012658038</td><td>6321475822</td><td>55</td><td>NO</td><td>YES</td></tr>
+      <tr><td>42</td><td>SK. AKBAR</td><td>---</td><td>9490944940</td><td>31</td><td>NO</td><td>YES</td></tr>
+      <tr><td>43</td><td>V. VARSHINI</td><td>757846381835</td><td>9381485835</td><td>30</td><td>NO</td><td>YES</td></tr>
+      <tr><td>44</td><td>S. GOPI</td><td>---</td><td>9843589889</td><td>39</td><td>NO</td><td>YES</td></tr>
+      <tr><td>45</td><td>O. MANASA</td><td>---</td><td>6300726503</td><td>41</td><td>NO</td><td>YES</td></tr>
+      <tr><td>46</td><td>S. MUNIREDDY</td><td>---</td><td>8245169755</td><td>72</td><td>YES</td><td>NO</td></tr>
+      <tr><td>47</td><td>S. MURALI</td><td>---</td><td>9676365798</td><td>41</td><td>NO</td><td>YES</td></tr>
+      <tr><td>48</td><td>K. OBUL REDDY</td><td>---</td><td>9014396852</td><td>45</td><td>NO</td><td>YES</td></tr>
+      <tr><td>49</td><td>N. SANKAR REDDY</td><td>---</td><td>9000591917</td><td>76</td><td>YES</td><td>NO</td></tr>
+      <tr><td>50</td><td>N. VENKATRAM</td><td>---</td><td>8452361785</td><td>62</td><td>YES</td><td>NO</td></tr>
+      </tbody>
+    </table>
+    <a href="gallery.html">
+    <button class="next-page-btn">Next Page</button>
+    </a>
+
+  
+
+  <script>
+    function filterTable() {
+      const input = document.getElementById("searchInput");
+      const filter = input.value.toLowerCase();
+      const table = document.getElementById("residentTable");
+      const trs = table.querySelectorAll("tbody tr");
+      trs.forEach(row => {
+        const cells = Array.from(row.getElementsByTagName("td"));
+        row.style.display = cells.some(td => td.innerText.toLowerCase().includes(filter)) ? "" : "none";
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll("#residentTable tbody tr");
+      rows.forEach(row => {
+        row.addEventListener("click", () => {
+          rows.forEach(r => r.classList.remove("highlight"));
+          row.classList.add("highlight");
+        });
+      });
+    });
+    
+  </script>
+</body>
+</html>

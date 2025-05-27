@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Segoe+UI:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('n2.jpg') no-repeat center center fixed; /* Add your image path here */
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0f2f7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Optional dark overlay for better text contrast */
+            z-index: -1; /* Place overlay behind content */
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 3.5em;
+            color: #64ffda;
+            text-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda, 0 0 30px #64ffda;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 800px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            animation: fadeIn 1s ease-out;
+            margin-bottom: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 30px;
+            color: #d1d5db;
+        }
+
+        .back-button-container {
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #00bcd4;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #008ba7;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .home-button a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .home-button:hover a {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="heading">Introduction</div>
+    <div class="container">
+        <p>
+            Agriculture has always been the backbone of human civilization. It plays a vital role in sustaining life by providing the food we eat, the clothes we wear, and even the shelter we live in. The agricultural field is not only essential for human survival but also for the economic development of many nations. Agriculture ensures food security. It is the primary source of food for the global population, supplying essential crops such as grains, fruits, vegetables, and livestock. Agriculture is a major contributor to the economy. In many developing countries, a large portion of the population is engaged in farming and related activities. Further more, agriculture provides raw materials for several industries. Products like cotton, wool, leather, and medicinal plants are all derived from the agricultural sector. And there are two ways of producing yield from the field One is in organic way and another one is chemical way Here's a detailed view on organic and chemical farming.<br>
+            Organic farming:<br>
+            Organic farming relies on natural processes and inputs such as compost, green manure, and biological pest control. It supports biodiversity by avoiding harmful synthetic chemicals. Organic produce contains fewer pesticide residues, and is preferred by health-conscious consumers.<br>
+            Chemical Farming:<br>
+            Chemical farming uses synthetic fertilizers, pesticides, and herbicides to increase crop yield quickly and efficiently. Its main advantage is high productivity. It allows farmers to grow more food on less land, which is crucial to feeding the growing global population.
+            
+        </p>
+    </div>
+    <div class="home-button">
+        <a href="survey.html">Next-Page</a>
+    </div>
+
+    <script>
+        // Subtle animation for the container on mouseover
+        const container = document.querySelector('.container');
+        if (container) {
+            container.addEventListener('mouseover', () => {
+                container.style.transform = 'scale(1.01)';
+                container.style.boxShadow = '0 12px 48px 0 rgba(31, 38, 135, 0.5)';
+            });
+
+            container.addEventListener('mouseout', () => {
+                container.style.transform = 'scale(1)';
+                container.style.boxShadow = '0 8px 32px 0 rgba(31, 38, 135, 0.37)';
+            });
+        }
+    </script>
+</body>
+
+</html>
